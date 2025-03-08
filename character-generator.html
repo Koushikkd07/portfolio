@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Generator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+        }
+        canvas {
+            background: transparent;
+            border: 1px solid #ccc;
+        }
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <canvas id="characterCanvas" width="400" height="600"></canvas>
+        <div class="controls">
+            <button onclick="downloadImage()">Download Character</button>
+        </div>
+    </div>
+    <script>
+        const canvas = document.getElementById('characterCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Clear canvas with transparent background
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw professional male character
+        function drawCharacter() {
+            // Head
+            ctx.beginPath();
+            ctx.fillStyle = '#FFD3B6';
+            ctx.arc(200, 150, 50, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            // Hair
+            ctx.beginPath();
+            ctx.fillStyle = '#4A4A4A';
+            ctx.moveTo(150, 150);
+            ctx.bezierCurveTo(150, 100, 250, 100, 250, 150);
+            ctx.lineTo(250, 130);
+            ctx.bezierCurveTo(250, 90, 150, 90, 150, 130);
+            ctx.fill();
+
+            // Eyes
+            ctx.beginPath();
+            ctx.fillStyle = '#FFFFFF';
+            ctx.arc(180, 140, 10, 0, Math.PI * 2);
+            ctx.arc(220, 140, 10, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Pupils
+            ctx.beginPath();
+            ctx.fillStyle = '#4A4A4A';
+            ctx.arc(180, 140, 5, 0, Math.PI * 2);
+            ctx.arc(220, 140, 5, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Smile
+            ctx.beginPath();
+            ctx.strokeStyle = '#000000';
+            ctx.lineWidth = 2;
+            ctx.arc(200, 160, 20, 0, Math.PI);
+            ctx.stroke();
+
+            // Neck
+            ctx.beginPath();
+            ctx.fillStyle = '#FFD3B6';
+            ctx.fillRect(185, 190, 30, 30);
+
+            // Body - Suit
+            ctx.beginPath();
+            ctx.fillStyle = '#2C3E50';
+            ctx.moveTo(150, 220);
+            ctx.lineTo(250, 220);
+            ctx.lineTo(270, 400);
+            ctx.lineTo(130, 400);
+            ctx.closePath();
+            ctx.fill();
+
+            // Shirt
+            ctx.beginPath();
+            ctx.fillStyle = '#FFFFFF';
+            ctx.moveTo(175, 220);
+            ctx.lineTo(225, 220);
+            ctx.lineTo(235, 300);
+            ctx.lineTo(165, 300);
+            ctx.closePath();
+            ctx.fill();
+
+            // Tie
+            ctx.beginPath();
+            ctx.fillStyle = '#E74C3C';
+            ctx.moveTo(195, 220);
+            ctx.lineTo(205, 220);
+            ctx.lineTo(210, 290);
+            ctx.lineTo(200, 300);
+            ctx.lineTo(190, 290);
+            ctx.closePath();
+            ctx.fill();
+
+            // Arms
+            ctx.beginPath();
+            ctx.fillStyle = '#2C3E50';
+            // Left arm
+            ctx.fillRect(130, 220, 30, 120);
+            // Right arm
+            ctx.fillRect(240, 220, 30, 120);
+
+            // Hands
+            ctx.beginPath();
+            ctx.fillStyle = '#FFD3B6';
+            // Left hand
+            ctx.arc(145, 350, 15, 0, Math.PI * 2);
+            // Right hand
+            ctx.arc(255, 350, 15, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Legs
+            ctx.fillStyle = '#34495E';
+            // Left leg
+            ctx.fillRect(160, 400, 35, 150);
+            // Right leg
+            ctx.fillRect(205, 400, 35, 150);
+
+            // Shoes
+            ctx.fillStyle = '#000000';
+            // Left shoe
+            ctx.beginPath();
+            ctx.ellipse(177, 550, 25, 15, 0, 0, Math.PI * 2);
+            ctx.fill();
+            // Right shoe
+            ctx.beginPath();
+            ctx.ellipse(223, 550, 25, 15, 0, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        // Draw the character
+        drawCharacter();
+
+        // Function to download the image
+        function downloadImage() {
+            const link = document.createElement('a');
+            link.download = 'character.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+</html> 
